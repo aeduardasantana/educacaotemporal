@@ -30,6 +30,7 @@ button:hover, button:focus-visible { color: white; background: var(--royal); }
 .site-header h1 { margin: .35rem 0; font-size: clamp(2rem, 7vw, 4rem); letter-spacing: .04em; }
 .eyebrow, .subtitle { margin: 0; font-weight: 800; letter-spacing: .08em; }
 .eyebrow { font-size: .78rem; }.subtitle { font-size: clamp(.8rem, 2vw, 1rem); }
+.install-button { margin-top: 1.2rem; border-color: white; color: var(--royal-dark); background: white; }.install-button:hover, .install-button:focus-visible { color: white; background: transparent; }
 main { width: min(1180px, calc(100% - 2rem)); margin: 1.5rem auto 3rem; }
 .clock-panel, .cycles-panel, .controls, .calendar-section { margin-bottom: 1.5rem; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); box-shadow: 0 8px 26px rgba(18, 49, 119, .08); }
 .clock-panel { padding: 1.5rem; }
