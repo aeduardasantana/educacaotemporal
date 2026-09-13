@@ -88,6 +88,10 @@ function updateNow() {
   const season=getSeason(now); $('season-text').textContent=`ESTAÇÃO DO ANO ATUAL: ${season.name}. COMEÇA NO DIA ${formatDate(season.start)} E TERMINA NO DIA ${formatDate(season.end)}.`;
   const moon=getMoon(now); $('moon-icon').textContent=moon.icon; $('moon-text').textContent=`FASE DA LUA ATUAL: ${moon.name}. COMEÇA NO DIA ${formatDate(moon.start)} E TERMINA NO DIA ${formatDate(moon.end)}.`;
 }
+function previewToday() {
+  const p=zonedParts();
+  $('selected-date-text').textContent=`HOJE, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
+}
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
 function renderCalendar() {
   const grid=$('calendar-grid'); grid.replaceChildren(); $('year-title').textContent=`ANO ${state.year}`; $('month-title').textContent=`MÊS ${MONTHS[state.month]}`;
@@ -118,7 +122,7 @@ function initialize() {
   $('previous-year').addEventListener('click',()=>{if(state.year>MIN_YEAR){state.year--;syncControls();renderCalendar();}}); $('next-year').addEventListener('click',()=>{if(state.year<MAX_YEAR){state.year++;syncControls();renderCalendar();}});
   $('previous-month').addEventListener('click',()=>changeMonth(-1)); $('next-month').addEventListener('click',()=>changeMonth(1));
   $('current-date').addEventListener('click',()=>{const n=zonedParts();state.year=Math.min(MAX_YEAR,Math.max(MIN_YEAR,n.year));state.month=n.month-1;syncControls();renderCalendar();});
-  updateNow(); setInterval(updateNow,1000); renderCalendar();
+  updateNow(); previewToday(); setInterval(updateNow,1000); renderCalendar();
   if(window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app');
 }
 document.addEventListener('DOMContentLoaded',initialize);
