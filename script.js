@@ -92,6 +92,13 @@ function previewToday() {
   $('selected-date-text').textContent='CLIQUE EM UMA DATA';
 }
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
+function openVLibras() {
+  const accessButton=document.querySelector('[vw-access-button]');
+  const pluginWrapper=document.querySelector('[vw-plugin-wrapper]');
+  if (!accessButton) return;
+  const isOpen=pluginWrapper && (pluginWrapper.classList.contains('active') || pluginWrapper.getAttribute('aria-hidden')==='false');
+  if (!isOpen) accessButton.click();
+}
 function renderCalendar() {
   const grid=$('calendar-grid'); grid.replaceChildren(); $('year-title').textContent=`ANO ${state.year}`; $('month-title').textContent=`MÊS ${MONTHS[state.month]}`;
   grid.append(createCell('div','weekday','SEMANA')); WEEKDAYS.forEach(d=>grid.append(createCell('div','weekday',d)));
@@ -110,7 +117,7 @@ function renderCalendar() {
       const dayWord=createCell('span','day-word','DIA'), dayNumber=createCell('span','day-number',String(day)), dayDetail=createCell('span','day-detail',[relation,event?event[1]:''].filter(Boolean).join(' — '));
       [dayWord,dayNumber,dayDetail].forEach(element=>element.setAttribute('aria-hidden','true'));
       button.append(dayWord,dayNumber,dayDetail);
-      button.addEventListener('click',()=>{ $('selected-date-text').textContent=button.dataset.spoken; button.scrollIntoView({block:'nearest'}); }); grid.append(button); day++;
+      button.addEventListener('click',()=>{ $('selected-date-text').textContent=button.dataset.spoken; openVLibras(); button.scrollIntoView({block:'nearest'}); }); grid.append(button); day++;
     }
   }
   $('previous-year').disabled=state.year===MIN_YEAR; $('next-year').disabled=state.year===MAX_YEAR;
