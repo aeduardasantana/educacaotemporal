@@ -273,6 +273,10 @@ O calendário deverá apresentar datas nacionais e mundiais selecionadas. Não s
 
 Domingo, feriado, ponto facultativo e data comemorativa deverão possuir cores diferentes. A cor não será o único meio de distinção: cada categoria também deverá ter identificação textual acessível.
 
+### RN15 — Unidade textual para o VLibras
+
+Textos que formam uma única informação não deverão ser fragmentados em elementos selecionáveis independentes. Cada data será apresentada como uma expressão completa, por exemplo “HOJE, DIA 13”. Para evitar ambiguidade com estação ferroviária, o painel usará a expressão contextualizada “ESTAÇÃO DO ANO ATUAL: INVERNO”, seguida das datas de início e término.
+
 ## 10. Conteúdo inicial de datas especiais
 
 ### 10.1 Feriados nacionais informados para 2026
@@ -493,3 +497,4 @@ A primeira versão será considerada funcional quando:
 | 1.0 | Consolidação inicial do contexto, escopo, requisitos, regras de negócio, acessibilidade e etapas do projeto. |
 | 1.1 | Definição do nome público, público prioritário, identidade visual, intervalo de anos, organização das semanas, navegação mensal, textos selecionáveis e limites de escopo. |
 | 1.2 | Inclusão das regras de proteção autorais, licença proprietária e identificação da titular do código. |
+| 1.3 | Unificação dos textos selecionáveis para o VLibras e contextualização da expressão “estação do ano”. |
