@@ -1,4 +1,4 @@
-# Documento Mestre do Projeto — Calendário Temporal em Libras
+# Documento Mestre do Projeto — Calendário em Libras
 
 **Responsável pedagógica:** Professora Eduarda Bispo  
 **Repositório:** `aeduardasantana/educacaotemporal`  
@@ -7,7 +7,7 @@
 
 ## 1. Identificação do produto
 
-O **Calendário Temporal em Libras** será um recurso digital permanente de ensino e orientação temporal. O sistema apresentará calendários anuais, informações do tempo presente e textos preparados para interação com o VLibras.
+O **CALENDÁRIO EM LIBRAS** será um recurso digital permanente de ensino e orientação temporal. O sistema apresentará calendários anuais, informações do tempo presente e textos preparados para interação com o VLibras.
 
 O calendário não ficará limitado a 2026. A pessoa poderá escolher o ano, e a página será recalculada e carregada no mesmo padrão visual, pedagógico e de acessibilidade.
 
@@ -47,7 +47,7 @@ Disponibilizar um calendário digital acessível, responsivo e permanente que re
 
 ## 5. Público de uso
 
-O sistema poderá ser utilizado por:
+O sistema terá como públicos prioritários ouvintes aprendendo Libras e pessoas surdas não alfabetizadas ou em processo de alfabetização. Também poderá ser utilizado por:
 
 - estudantes surdos;
 - pessoas em processo de aquisição ou ampliação de Libras;
@@ -86,7 +86,7 @@ A primeira versão deverá conter:
 
 O início da página deverá apresentar:
 
-- nome do recurso;
+- nome do recurso: “CALENDÁRIO EM LIBRAS”, em caixa alta;
 - identificação da professora Eduarda Bispo;
 - seletor do ano;
 - botão “ANO ANTERIOR”;
@@ -101,8 +101,8 @@ O painel deverá apresentar:
 - data de início da estação;
 - data de término da estação;
 - fase atual da Lua;
-- data e horário de início da fase;
-- data e horário de término da fase;
+- data de início da fase;
+- data de término da fase;
 - relógio analógico em funcionamento;
 - horário atual em texto.
 
@@ -112,7 +112,7 @@ Exemplo do texto do relógio:
 
 ### 7.3 Calendário anual
 
-Os doze meses serão exibidos no mesmo padrão. Cada mês terá um título explícito, por exemplo:
+O sistema deverá abrir inicialmente no mês atual e permitir que a pessoa escolha outro mês para visualização. Os doze meses manterão o mesmo padrão. Cada mês terá um título explícito, por exemplo:
 
 > MÊS JANEIRO
 
@@ -122,6 +122,8 @@ Cada célula válida do calendário apresentará a palavra “DIA” acima do n�
 
 Os espaços necessários apenas para alinhamento das semanas não deverão ser anunciados como dias.
 
+A semana deverá começar no domingo, com os nomes completos dos dias da semana. Cada linha semanal do mês deverá ser identificada sequencialmente como “SEMANA 1”, “SEMANA 2”, “SEMANA 3” e assim por diante.
+
 ## 8. Requisitos funcionais
 
 ### RF01 — Gerar o calendário anual
@@ -130,7 +132,7 @@ O sistema deverá gerar corretamente os doze meses do ano escolhido.
 
 ### RF02 — Selecionar o ano
 
-A pessoa deverá poder informar ou selecionar um ano. Ao confirmar a escolha, toda a página deverá ser atualizada no mesmo padrão.
+A pessoa deverá poder selecionar um ano entre 2025 e 2030. Ao confirmar a escolha, toda a página deverá ser atualizada no mesmo padrão.
 
 ### RF03 — Navegar entre anos
 
@@ -178,7 +180,13 @@ O sistema deverá informar a fase vigente da Lua e seu período de início e té
 
 As datas especiais deverão ser visualmente identificadas e possuir uma descrição textual selecionável.
 
-### RF13 — Integrar o VLibras
+Ao selecionar uma data comum, o texto disponível ao VLibras deverá seguir o padrão “DIA X”. Ao selecionar uma data especial, deverá seguir o padrão “DIA X, FERIADO X” ou a categoria equivalente.
+
+### RF13 — Selecionar o mês
+
+O sistema deverá abrir no mês atual e permitir a escolha de qualquer outro mês do ano selecionado.
+
+### RF14 — Integrar o VLibras
 
 O componente oficial do VLibras deverá estar disponível na página para interpretação dos textos selecionados.
 
@@ -244,6 +252,26 @@ O sistema deverá separar:
 ### RN09 — Validação das datas
 
 Datas legais, comemorativas e pontos facultativos deverão ter sua fonte registrada. Datas variáveis deverão ser verificadas antes de serem tratadas como permanentes.
+
+### RN10 — Limites de navegação
+
+O seletor deverá aceitar somente os anos de 2025 a 2030.
+
+### RN11 — Organização das semanas
+
+Cada semana deverá começar no domingo. Os dias da semana deverão aparecer por extenso, e as linhas deverão receber numeração mensal iniciada em “SEMANA 1”.
+
+### RN12 — Estações e fases da Lua
+
+Os períodos das estações do ano e das fases da Lua serão apresentados somente por datas, sem exibição do horário da mudança.
+
+### RN13 — Abrangência das datas especiais
+
+O calendário deverá apresentar datas nacionais e mundiais selecionadas. Não serão incluídos feriados estaduais de Goiás nem feriados municipais de Goiânia ou Trindade.
+
+### RN14 — Cores das categorias
+
+Domingo, feriado, ponto facultativo e data comemorativa deverão possuir cores diferentes. A cor não será o único meio de distinção: cada categoria também deverá ter identificação textual acessível.
 
 ## 10. Conteúdo inicial de datas especiais
 
@@ -323,15 +351,23 @@ A primeira versão não deverá coletar dados pessoais nem exigir cadastro.
 
 O sistema deverá ser testado nas versões atuais dos principais navegadores compatíveis com o VLibras.
 
+### RNF07 — Impressão e mídia própria
+
+O sistema não terá função específica de impressão, áudio ou vídeos próprios em Libras. A interpretação será realizada exclusivamente pela integração com o VLibras.
+
 ## 13. Diretrizes visuais iniciais
 
+- A identidade visual usará azul royal como cor principal.
+- O desenho será simples, profissional e sem excesso de elementos.
+- Os textos principais serão apresentados em caixa alta.
 - O número do dia será o elemento principal de cada célula.
 - A palavra “DIA” ficará menor e acima do número.
 - “ONTEM”, “HOJE” e “AMANHÃ” terão distinção visual clara.
 - O “X” de data passada não poderá dominar nem ocultar o conteúdo.
 - Datas especiais deverão ser reconhecíveis sem sobrecarregar a tela.
 - O painel inicial deverá separar claramente estação, Lua e relógio.
-- A visualização em celular poderá apresentar um mês por vez para manter a legibilidade.
+- A visualização apresentará um mês por vez, inclusive no celular, com seletor para mudança do mês.
+- Domingo, feriado, ponto facultativo e data comemorativa terão cores distintas e legenda textual.
 
 ## 14. Critérios de aceite da primeira versão
 
@@ -352,25 +388,23 @@ A primeira versão será considerada funcional quando:
 13. não depender de banco de dados;
 14. poder ser publicado a partir do repositório do GitHub.
 
-## 15. Decisões pendentes
+## 15. Decisões de produto confirmadas
 
-Antes ou durante a prototipação, deverão ser confirmados:
-
-1. nome público definitivo do recurso;
-2. identidade visual, cores, tipografia e uso de logotipo;
-3. limite mínimo e máximo de anos no seletor;
-4. início da semana no domingo ou na segunda-feira;
-5. formato dos nomes dos dias da semana;
-6. exibição de todos os meses na mesma tela ou navegação mensal no celular;
-7. texto completo mostrado ao selecionar uma data comum;
-8. comportamento ao selecionar uma data especial;
-9. regra astronômica e grau de precisão exigido para estações e fases da Lua;
-10. inclusão de feriados estaduais de Goiás e municipais de Goiânia ou Trindade;
-11. distinção visual entre feriado, ponto facultativo e data comemorativa;
-12. possibilidade de impressão do calendário;
-13. necessidade futura de áudio, vídeos próprios em Libras ou atividades pedagógicas.
-
-Essas pendências não impedem a criação da estrutura técnica inicial, mas algumas influenciam o acabamento visual e o conteúdo definitivo.
+1. Nome público: “CALENDÁRIO EM LIBRAS”.
+2. Público prioritário: ouvintes aprendendo Libras e pessoas surdas não alfabetizadas ou em processo de alfabetização.
+3. Identidade visual: azul royal, simples, profissional e com textos principais em caixa alta.
+4. Intervalo de anos: 2025 a 2030.
+5. Início da semana: domingo.
+6. Linhas do calendário: “SEMANA 1”, “SEMANA 2” e seguintes.
+7. Dias da semana: nomes completos.
+8. Visualização: um mês por vez, abrindo no mês atual e permitindo escolha.
+9. Data comum selecionada: “DIA X”.
+10. Data especial selecionada: “DIA X, FERIADO X” ou categoria correspondente.
+11. Estações e fases da Lua: precisão por dia, sem horário.
+12. Abrangência: somente datas nacionais e mundiais selecionadas.
+13. Categorias visuais: cores diferentes para domingo, feriado, ponto facultativo e data comemorativa.
+14. Impressão: não será incluída.
+15. Recursos em Libras: somente integração com o VLibras; não haverá áudio ou vídeos próprios na versão definida.
 
 ## 16. Etapas propostas de desenvolvimento
 
@@ -437,7 +471,7 @@ Essas pendências não impedem a criação da estrutura técnica inicial, mas al
 
 ## 18. Glossário inicial
 
-**Calendário permanente:** calendário gerado para diferentes anos, sem ficar limitado a uma edição anual fixa.
+**Calendário permanente:** calendário gerado para todos os anos permitidos entre 2025 e 2030, sem ficar limitado a uma edição anual fixa.
 
 **Data atual:** data calculada no fuso horário adotado pelo sistema.
 
@@ -454,3 +488,4 @@ Essas pendências não impedem a criação da estrutura técnica inicial, mas al
 | Versão | Alteração |
 |---|---|
 | 1.0 | Consolidação inicial do contexto, escopo, requisitos, regras de negócio, acessibilidade e etapas do projeto. |
+| 1.1 | Definição do nome público, público prioritário, identidade visual, intervalo de anos, organização das semanas, navegação mensal, textos selecionáveis e limites de escopo. |
