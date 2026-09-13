@@ -461,11 +461,8 @@ A primeira versão será considerada funcional quando:
 - exercícios de ontem, hoje e amanhã;
 - montagem orientada de datas;
 - registro visual de atividades realizadas;
-- vídeos próprios em Libras;
-- impressão mensal;
 - calendário escolar;
 - personalização da cidade e do fuso horário;
-- feriados estaduais e municipais por localidade;
 - modo de apresentação para uso em sala;
 - expansão para outros anos letivos e outros públicos.
 
