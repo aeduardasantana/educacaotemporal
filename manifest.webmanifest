@@ -1,0 +1,19 @@
+{
+  "name": "Calendário em Libras",
+  "short_name": "Calendário Libras",
+  "description": "Recurso de orientação temporal com integração ao VLibras.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fc",
+  "theme_color": "#1646c7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
