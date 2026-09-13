@@ -22,20 +22,9 @@
   </header>
 
   <main>
-    <section class="time-panel" aria-labelledby="agora-titulo">
-      <div class="info-column">
-        <h2 id="agora-titulo">AGORA</h2>
-        <article class="info-card">
-          <span class="info-icon" aria-hidden="true">☀</span>
-          <p id="season-text" class="complete-info"></p>
-        </article>
-        <article class="info-card">
-          <span id="moon-icon" class="info-icon" aria-hidden="true">◐</span>
-          <p id="moon-text" class="complete-info"></p>
-        </article>
-      </div>
-
+    <section class="clock-panel" aria-labelledby="agora-titulo">
       <div class="clock-column">
+        <h2 id="agora-titulo">AGORA</h2>
         <div class="clock" role="img" aria-label="RELÓGIO ANALÓGICO">
           <span class="clock-number n12">12</span><span class="clock-number n3">3</span>
           <span class="clock-number n6">6</span><span class="clock-number n9">9</span>
@@ -46,6 +35,9 @@
         </div>
         <p id="time-text" class="time-text" aria-live="off"></p>
         <p id="date-text" class="date-text"></p>
+      </div>
+      <div id="selected-date" class="selected-date" aria-live="polite">
+        <p class="label">DATA SELECIONADA</p><p id="selected-date-text" class="selected-value"></p>
       </div>
     </section>
 
@@ -75,15 +67,26 @@
       </div>
 
       <div id="calendar-grid" class="calendar-grid" role="grid" aria-labelledby="month-title"></div>
-      <div id="selected-date" class="selected-date" aria-live="polite">
-        <p class="label">DATA SELECIONADA</p><p id="selected-date-text" class="selected-value">CLIQUE EM UM DIA</p>
+    </section>
+
+    <section class="cycles-panel" aria-labelledby="cycles-title">
+      <h2 id="cycles-title">CICLOS NATURAIS ATUAIS</h2>
+      <div class="cycles-grid">
+        <article class="info-card">
+          <span class="info-icon" aria-hidden="true">☀</span>
+          <p id="season-text" class="complete-info"></p>
+        </article>
+        <article class="info-card">
+          <span id="moon-icon" class="info-icon" aria-hidden="true">◐</span>
+          <p id="moon-text" class="complete-info"></p>
+        </article>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>IDENTIFICAÇÃO: PROFESSORA EDUARDA BISPO — FALECOM@AEDUARDABISPO.COM.BR</p>
-    <p>© 2026 — TODOS OS DIREITOS RESERVADOS — ASSINATURA DO CÓDIGO: EDUFERTANAPO</p>
+    <p>Identificação: Professora Eduarda Bispo — falecom@aeduardabispo.com.br</p>
+    <p>© 2026 — Todos os direitos reservados — Assinatura do código: edufertanapo</p>
   </footer>
 
   <div vw class="enabled">
