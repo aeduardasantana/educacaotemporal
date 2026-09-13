@@ -85,8 +85,8 @@ function updateNow() {
   $('hour-hand').style.transform=`rotate(${(p.hour%12)*30+p.minute*.5}deg)`; $('minute-hand').style.transform=`rotate(${p.minute*6+p.second*.1}deg)`; $('second-hand').style.transform=`rotate(${p.second*6}deg)`;
   $('time-text').textContent=`AGORA ${p.hour} HORAS, ${p.minute} MINUTOS E ${p.second} SEGUNDOS ${period}`;
   const today=dateOnly(p.year,p.month-1,p.day); $('date-text').textContent=`HOJE, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
-  const season=getSeason(now); $('season-name').textContent=season.name; $('season-period').textContent=`DO DIA ${formatDate(season.start)} AO DIA ${formatDate(season.end)}`;
-  const moon=getMoon(now); $('moon-name').textContent=moon.name; $('moon-icon').textContent=moon.icon; $('moon-period').textContent=`DO DIA ${formatDate(moon.start)} AO DIA ${formatDate(moon.end)}`;
+  const season=getSeason(now); $('season-text').textContent=`ESTAÇÃO DO ANO ATUAL: ${season.name}. COMEÇA NO DIA ${formatDate(season.start)} E TERMINA NO DIA ${formatDate(season.end)}.`;
+  const moon=getMoon(now); $('moon-icon').textContent=moon.icon; $('moon-text').textContent=`FASE DA LUA ATUAL: ${moon.name}. COMEÇA NO DIA ${formatDate(moon.start)} E TERMINA NO DIA ${formatDate(moon.end)}.`;
 }
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
 function renderCalendar() {
@@ -103,7 +103,7 @@ function renderCalendar() {
       button.type='button'; button.className='day-cell'; if(weekday===0) button.classList.add('is-sunday'); if(date<today) button.classList.add('is-past'); if(relation==='HOJE') button.classList.add('is-today'); if(event) button.classList.add(`is-${event[0]}`);
       const spoken=[relation,`DIA ${day}`,event?`${event[0]==='holiday'?'FERIADO':event[0]==='optional'?'PONTO FACULTATIVO':'DATA COMEMORATIVA'} ${event[1]}`:''].filter(Boolean).join(', ');
       button.setAttribute('aria-label',`${spoken}${date<today?', DIA PASSADO':''}`); button.dataset.spoken=spoken;
-      button.append(createCell('span','day-word','DIA'),createCell('span','day-number',String(day)),createCell('span','day-context',relation),createCell('span','day-event',event?event[1]:''));
+      button.append(createCell('span','day-complete-text',spoken));
       button.addEventListener('click',()=>{ $('selected-date-text').textContent=button.dataset.spoken; button.scrollIntoView({block:'nearest'}); }); grid.append(button); day++;
     }
   }
