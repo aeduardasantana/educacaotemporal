@@ -115,7 +115,7 @@ function activateVLibrasWhenReady(attempt=0) {
 }
 function initializeVLibras(openAfterLoad=false) {
   if (window.VLibras && !vlibrasWidgetInitialized) {
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget({ rootPath:'https://vlibras.gov.br/app', avatar:'hosana', position:'R' });
     vlibrasWidgetInitialized=true;
   }
   if (openAfterLoad) activateVLibrasWhenReady();
