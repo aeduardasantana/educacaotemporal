@@ -90,7 +90,8 @@ function updateNow() {
 }
 function previewToday() {
   const p=zonedParts();
-  $('selected-date-text').textContent=`HOJE, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
+  const weekday=WEEKDAYS[new Date(p.year,p.month-1,p.day).getDay()];
+  $('selected-date-text').textContent=`HOJE, ${weekday}, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
 }
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
 function renderCalendar() {
@@ -105,9 +106,12 @@ function renderCalendar() {
       if(position<first || day>days) { grid.append(createCell('div','empty-cell','')); continue; }
       const date=dateOnly(state.year,state.month,day), event=getEvent(state.year,state.month,day), relation=relationFor(date), button=document.createElement('button');
       button.type='button'; button.className='day-cell'; if(weekday===0) button.classList.add('is-sunday'); if(date<today) button.classList.add('is-past'); if(relation==='HOJE') button.classList.add('is-today'); if(event) button.classList.add(`is-${event[0]}`);
-      const spoken=[relation,`DIA ${day}`,event?`${event[0]==='holiday'?'FERIADO':event[0]==='optional'?'PONTO FACULTATIVO':'DATA COMEMORATIVA'} ${event[1]}`:''].filter(Boolean).join(', ');
+      const category=event?event[0]==='holiday'?'FERIADO':event[0]==='optional'?'PONTO FACULTATIVO':'DATA COMEMORATIVA':'';
+      const spoken=[relation,WEEKDAYS[weekday],`DIA ${day} DE ${MONTHS[state.month]} DE ${state.year}`,event?`${category} ${event[1]}`:''].filter(Boolean).join(', ');
       button.setAttribute('aria-label',`${spoken}${date<today?', DIA PASSADO':''}`); button.dataset.spoken=spoken;
-      button.append(createCell('span','day-complete-text',spoken));
+      const dayWord=createCell('span','day-word','DIA'), dayNumber=createCell('span','day-number',String(day)), dayDetail=createCell('span','day-detail',[relation,event?event[1]:''].filter(Boolean).join(' — '));
+      [dayWord,dayNumber,dayDetail].forEach(element=>element.setAttribute('aria-hidden','true'));
+      button.append(dayWord,dayNumber,dayDetail);
       button.addEventListener('click',()=>{ $('selected-date-text').textContent=button.dataset.spoken; button.scrollIntoView({block:'nearest'}); }); grid.append(button); day++;
     }
   }
