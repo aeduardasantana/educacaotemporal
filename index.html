@@ -1,0 +1,102 @@
+<!doctype html>
+<!--
+  CALENDÁRIO EM LIBRAS
+  Autoria e titularidade: Eduarda Bispo <falecom@aeduardabispo.com.br>
+  © 2026 Eduarda Bispo. Todos os direitos reservados.
+  Consulte LICENSE antes de copiar, modificar ou distribuir.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Eduarda Bispo">
+  <meta name="description" content="Calendário acessível para aprendizagem de Libras e orientação temporal.">
+  <meta name="theme-color" content="#1646c7">
+  <title>Calendário em Libras</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#calendario">IR PARA O CALENDÁRIO</a>
+
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">RECURSO DE ENSINO DA PROFESSORA EDUARDA BISPO</p>
+      <h1>CALENDÁRIO EM LIBRAS</h1>
+      <p class="subtitle">APRENDA O TEMPO: ONTEM, HOJE E AMANHÃ</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="time-panel" aria-labelledby="agora-titulo">
+      <div class="info-column">
+        <h2 id="agora-titulo">AGORA</h2>
+        <article class="info-card">
+          <span class="info-icon" aria-hidden="true">☀</span>
+          <div><p class="label">ESTAÇÃO ATUAL</p><p id="season-name" class="value"></p><p id="season-period" class="period"></p></div>
+        </article>
+        <article class="info-card">
+          <span id="moon-icon" class="info-icon" aria-hidden="true">◐</span>
+          <div><p class="label">LUA ATUAL</p><p id="moon-name" class="value"></p><p id="moon-period" class="period"></p></div>
+        </article>
+      </div>
+
+      <div class="clock-column">
+        <div class="clock" role="img" aria-label="RELÓGIO ANALÓGICO">
+          <span class="clock-number n12">12</span><span class="clock-number n3">3</span>
+          <span class="clock-number n6">6</span><span class="clock-number n9">9</span>
+          <span id="hour-hand" class="hand hour-hand"></span>
+          <span id="minute-hand" class="hand minute-hand"></span>
+          <span id="second-hand" class="hand second-hand"></span>
+          <span class="clock-center"></span>
+        </div>
+        <p id="time-text" class="time-text" aria-live="off"></p>
+        <p id="date-text" class="date-text"></p>
+      </div>
+    </section>
+
+    <section class="controls" aria-labelledby="escolha-titulo">
+      <h2 id="escolha-titulo">ESCOLHA UMA DATA</h2>
+      <div class="control-grid">
+        <button id="previous-year" type="button" aria-label="ANO ANTERIOR">← ANO ANTERIOR</button>
+        <label>ANO<select id="year-select" aria-label="ESCOLHER ANO"></select></label>
+        <button id="next-year" type="button" aria-label="PRÓXIMO ANO">PRÓXIMO ANO →</button>
+        <label>MÊS<select id="month-select" aria-label="ESCOLHER MÊS"></select></label>
+        <button id="current-date" class="primary-button" type="button">VOLTAR AO ANO ATUAL</button>
+      </div>
+    </section>
+
+    <section id="calendario" class="calendar-section" aria-labelledby="month-title">
+      <div class="calendar-heading">
+        <button id="previous-month" class="round-button" type="button" aria-label="MÊS ANTERIOR">←</button>
+        <div><p id="year-title" class="year-title"></p><h2 id="month-title"></h2></div>
+        <button id="next-month" class="round-button" type="button" aria-label="PRÓXIMO MÊS">→</button>
+      </div>
+
+      <div class="legend" aria-label="LEGENDA DO CALENDÁRIO">
+        <span class="legend-item sunday">DOMINGO</span>
+        <span class="legend-item holiday">FERIADO</span>
+        <span class="legend-item optional">PONTO FACULTATIVO</span>
+        <span class="legend-item commemorative">DATA COMEMORATIVA</span>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid" role="grid" aria-labelledby="month-title"></div>
+      <div id="selected-date" class="selected-date" aria-live="polite">
+        <p class="label">DATA SELECIONADA</p><p id="selected-date-text" class="selected-value">CLIQUE EM UM DIA</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>CALENDÁRIO EM LIBRAS — RECURSO DE ENSINO DA PROFESSORA EDUARDA BISPO</p>
+    <p>© 2026 EDUARDA BISPO — TODOS OS DIREITOS RESERVADOS</p>
+    <a href="mailto:falecom@aeduardabispo.com.br">FALECOM@AEDUARDABISPO.COM.BR</a>
+  </footer>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
