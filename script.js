@@ -35,6 +35,7 @@ const seasons = {
 };
 
 const state = { year: null, month: null };
+let deferredInstallPrompt = null;
 const $ = (id) => document.getElementById(id);
 
 function zonedParts(date = new Date()) {
@@ -134,4 +135,28 @@ function initialize() {
   updateNow(); previewToday(); setInterval(updateNow,1000); renderCalendar();
   if(window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app');
 }
-document.addEventListener('DOMContentLoaded',initialize);
+window.addEventListener('beforeinstallprompt',(event)=>{
+  event.preventDefault();
+  deferredInstallPrompt=event;
+  $('install-app').hidden=false;
+});
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  $('install-app').hidden=true;
+});
+document.addEventListener('click',async(event)=>{
+  if(event.target.id!=='install-app') return;
+  if(!deferredInstallPrompt) {
+    if(/iphone|ipad|ipod/i.test(navigator.userAgent)) alert('NO SAFARI, TOQUE EM COMPARTILHAR E DEPOIS EM ADICIONAR À TELA DE INÍCIO.');
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt=null;
+  $('install-app').hidden=true;
+});
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));
+document.addEventListener('DOMContentLoaded',()=>{
+  initialize();
+  if(/iphone|ipad|ipod/i.test(navigator.userAgent) && !navigator.standalone) $('install-app').hidden=false;
+});
