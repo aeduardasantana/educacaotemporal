@@ -84,14 +84,12 @@ function updateNow() {
   const now=new Date(), p=zonedParts(now), period=p.hour<6?'DA MADRUGADA':p.hour<12?'DA MANHÃ':p.hour<18?'DA TARDE':'DA NOITE';
   $('hour-hand').style.transform=`rotate(${(p.hour%12)*30+p.minute*.5}deg)`; $('minute-hand').style.transform=`rotate(${p.minute*6+p.second*.1}deg)`; $('second-hand').style.transform=`rotate(${p.second*6}deg)`;
   $('time-text').textContent=`AGORA ${p.hour} HORAS, ${p.minute} MINUTOS E ${p.second} SEGUNDOS ${period}`;
-  const today=dateOnly(p.year,p.month-1,p.day); $('date-text').textContent=`HOJE, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
+  const today=dateOnly(p.year,p.month-1,p.day), weekday=WEEKDAYS[new Date(p.year,p.month-1,p.day).getDay()]; $('date-text').textContent=`HOJE, ${weekday}, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
   const season=getSeason(now); $('season-text').textContent=`ESTAÇÃO DO ANO ATUAL: ${season.name}. COMEÇA NO DIA ${formatDate(season.start)} E TERMINA NO DIA ${formatDate(season.end)}.`;
   const moon=getMoon(now); $('moon-icon').textContent=moon.icon; $('moon-text').textContent=`FASE DA LUA ATUAL: ${moon.name}. COMEÇA NO DIA ${formatDate(moon.start)} E TERMINA NO DIA ${formatDate(moon.end)}.`;
 }
 function previewToday() {
-  const p=zonedParts();
-  const weekday=WEEKDAYS[new Date(p.year,p.month-1,p.day).getDay()];
-  $('selected-date-text').textContent=`HOJE, ${weekday}, DIA ${p.day} DE ${MONTHS[p.month-1]} DE ${p.year}`;
+  $('selected-date-text').textContent='CLIQUE EM UMA DATA';
 }
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
 function renderCalendar() {
