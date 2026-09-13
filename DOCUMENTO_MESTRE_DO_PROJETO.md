@@ -355,6 +355,12 @@ O sistema deverá ser testado nas versões atuais dos principais navegadores com
 
 O sistema não terá função específica de impressão, áudio ou vídeos próprios em Libras. A interpretação será realizada exclusivamente pela integração com o VLibras.
 
+### RNF08 — Autoria e proteção do código
+
+Os arquivos de programação deverão utilizar `edufertanapo` como assinatura do código. O nome e o contato da autora deverão aparecer apenas no campo de identificação da interface, sem repetição nos cabeçalhos dos arquivos ou na documentação técnica. O repositório utilizará aviso de direitos autorais e licença proprietária, sem autorização geral de cópia, modificação, redistribuição ou comercialização.
+
+A identificação no código constitui aviso de autoria, mas não substitui eventual registro do programa de computador no INPI. O histórico de commits deverá ser preservado como evidência complementar da evolução do projeto.
+
 ## 13. Diretrizes visuais iniciais
 
 - A identidade visual usará azul royal como cor principal.
@@ -486,3 +492,4 @@ A primeira versão será considerada funcional quando:
 |---|---|
 | 1.0 | Consolidação inicial do contexto, escopo, requisitos, regras de negócio, acessibilidade e etapas do projeto. |
 | 1.1 | Definição do nome público, público prioritário, identidade visual, intervalo de anos, organização das semanas, navegação mensal, textos selecionáveis e limites de escopo. |
+| 1.2 | Inclusão das regras de proteção autorais, licença proprietária e identificação da titular do código. |
