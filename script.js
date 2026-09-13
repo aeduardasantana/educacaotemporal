@@ -36,6 +36,8 @@ const seasons = {
 
 const state = { year: null, month: null };
 let deferredInstallPrompt = null;
+let vlibrasWidgetInitialized = false;
+let vlibrasActivationTimer = null;
 const $ = (id) => document.getElementById(id);
 
 function zonedParts(date = new Date()) {
@@ -93,12 +95,33 @@ function previewToday() {
   $('selected-date-text').textContent='CLIQUE EM UMA DATA';
 }
 function createCell(tag,className,text) { const el=document.createElement(tag); el.className=className; el.textContent=text; return el; }
-function openVLibras() {
+function isStandaloneApp() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+function isVLibrasOpen() {
+  const wrapper=document.querySelector('[vw-plugin-wrapper]');
+  return Boolean(wrapper && (wrapper.classList.contains('active') || wrapper.getAttribute('aria-hidden')==='false'));
+}
+function activateVLibrasWhenReady(attempt=0) {
+  window.clearTimeout(vlibrasActivationTimer);
   const accessButton=document.querySelector('[vw-access-button]');
-  const pluginWrapper=document.querySelector('[vw-plugin-wrapper]');
-  if (!accessButton) return;
-  const isOpen=pluginWrapper && (pluginWrapper.classList.contains('active') || pluginWrapper.getAttribute('aria-hidden')==='false');
-  if (!isOpen) accessButton.click();
+  if (accessButton && !isVLibrasOpen()) {
+    accessButton.click();
+    return;
+  }
+  if (!accessButton && attempt<40) {
+    vlibrasActivationTimer=window.setTimeout(()=>activateVLibrasWhenReady(attempt+1),250);
+  }
+}
+function initializeVLibras(openAfterLoad=false) {
+  if (window.VLibras && !vlibrasWidgetInitialized) {
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    vlibrasWidgetInitialized=true;
+  }
+  if (openAfterLoad) activateVLibrasWhenReady();
+}
+function openVLibras() {
+  initializeVLibras(true);
 }
 function renderCalendar() {
   const grid=$('calendar-grid'); grid.replaceChildren(); $('year-title').textContent=`ANO ${state.year}`; $('month-title').textContent=`MÊS ${MONTHS[state.month]}`;
@@ -133,7 +156,7 @@ function initialize() {
   $('previous-month').addEventListener('click',()=>changeMonth(-1)); $('next-month').addEventListener('click',()=>changeMonth(1));
   $('current-date').addEventListener('click',()=>{const n=zonedParts();state.year=Math.min(MAX_YEAR,Math.max(MIN_YEAR,n.year));state.month=n.month-1;syncControls();renderCalendar();});
   updateNow(); previewToday(); setInterval(updateNow,1000); renderCalendar();
-  if(window.VLibras) new window.VLibras.Widget('https://vlibras.gov.br/app');
+  initializeVLibras(isStandaloneApp());
 }
 window.addEventListener('beforeinstallprompt',(event)=>{
   event.preventDefault();
@@ -156,6 +179,9 @@ document.addEventListener('click',async(event)=>{
   $('install-app').hidden=true;
 });
 if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));
+window.addEventListener('load',()=>initializeVLibras(isStandaloneApp()));
+window.addEventListener('pageshow',()=>{ if(isStandaloneApp()) initializeVLibras(true); });
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden && isStandaloneApp()) initializeVLibras(true); });
 document.addEventListener('DOMContentLoaded',()=>{
   initialize();
   if(/iphone|ipad|ipod/i.test(navigator.userAgent) && !navigator.standalone) $('install-app').hidden=false;
