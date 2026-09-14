@@ -140,7 +140,7 @@ function renderCalendar() {
       const category=event?event[0]==='holiday'?'FERIADO':event[0]==='optional'?'PONTO FACULTATIVO':'DATA COMEMORATIVA':'';
       const spoken=[relation,WEEKDAYS[weekday],`DIA ${day} DE ${MONTHS[state.month]} DE ${state.year}`,event?`${category} ${event[1]}`:''].filter(Boolean).join(', ');
       button.setAttribute('aria-label',`${spoken}${date<today?', DIA PASSADO':''}`); button.dataset.spoken=spoken;
-      const dayWord=createCell('span','day-word','DIA'), dayNumber=createCell('span','day-number',String(day)), dayDetail=createCell('span','day-detail',[relation,event?event[1]:''].filter(Boolean).join(' — '));
+      const dayWord=createCell('span','day-word','DIA'), dayNumber=createCell('span','day-number',String(day)), dayDetail=createCell('span','day-detail',[relation,event?event[1]:''].filter(Boolean).join(' - '));
       [dayWord,dayNumber,dayDetail].forEach(element=>element.setAttribute('aria-hidden','true'));
       button.append(dayWord,dayNumber,dayDetail);
       button.addEventListener('click',()=>{ $('selected-date-text').textContent=button.dataset.spoken; openVLibras(); button.scrollIntoView({block:'nearest'}); }); grid.append(button); day++;
