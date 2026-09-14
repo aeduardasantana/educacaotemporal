@@ -1,4 +1,4 @@
-# Documento Mestre do Projeto — Calendário em Libras
+# Documento Mestre do Projeto - Calendário em Libras
 
 **Responsável pedagógica:** Professora Eduarda Bispo  
 **Repositório:** `aeduardasantana/educacaotemporal`  
@@ -126,31 +126,31 @@ A semana deverá começar no domingo, com os nomes completos dos dias da semana.
 
 ## 8. Requisitos funcionais
 
-### RF01 — Gerar o calendário anual
+### RF01 - Gerar o calendário anual
 
 O sistema deverá gerar corretamente os doze meses do ano escolhido.
 
-### RF02 — Selecionar o ano
+### RF02 - Selecionar o ano
 
 A pessoa deverá poder selecionar um ano entre 2025 e 2030. Ao confirmar a escolha, toda a página deverá ser atualizada no mesmo padrão.
 
-### RF03 — Navegar entre anos
+### RF03 - Navegar entre anos
 
 O sistema deverá permitir avançar ou retroceder um ano por vez.
 
-### RF04 — Voltar ao ano atual
+### RF04 - Voltar ao ano atual
 
 O botão “VOLTAR AO ANO ATUAL” deverá carregar o ano correspondente à data atual no horário de Goiânia.
 
-### RF05 — Calcular anos bissextos
+### RF05 - Calcular anos bissextos
 
 O sistema deverá aplicar as regras do calendário gregoriano e exibir 29 de fevereiro somente nos anos bissextos.
 
-### RF06 — Identificar datas passadas
+### RF06 - Identificar datas passadas
 
 Toda data anterior à data atual deverá receber um “X” visual sobre a célula, sem esconder o número nem prejudicar a seleção ou a leitura do texto.
 
-### RF07 — Identificar ontem, hoje e amanhã
+### RF07 - Identificar ontem, hoje e amanhã
 
 Quando as datas pertencerem ao ano exibido, deverão receber os textos:
 
@@ -160,43 +160,43 @@ Quando as datas pertencerem ao ano exibido, deverão receber os textos:
 
 O número do dia deverá permanecer em destaque.
 
-### RF08 — Exibir o relógio analógico
+### RF08 - Exibir o relógio analógico
 
 O relógio deverá mostrar horas, minutos e segundos em movimento, usando o horário de Goiânia.
 
-### RF09 — Exibir o horário em texto
+### RF09 - Exibir o horário em texto
 
 O texto abaixo do relógio deverá ser atualizado a cada segundo e apresentar horas, minutos, segundos e período do dia.
 
-### RF10 — Exibir a estação atual
+### RF10 - Exibir a estação atual
 
 O sistema deverá informar a estação vigente e seu período de início e término.
 
-### RF11 — Exibir a fase atual da Lua
+### RF11 - Exibir a fase atual da Lua
 
 O sistema deverá informar a fase vigente da Lua e seu período de início e término.
 
-### RF12 — Exibir datas especiais
+### RF12 - Exibir datas especiais
 
 As datas especiais deverão ser visualmente identificadas e possuir uma descrição textual selecionável.
 
 Ao selecionar uma data comum, o texto disponível ao VLibras deverá seguir o padrão “DIA X”. Ao selecionar uma data especial, deverá seguir o padrão “DIA X, FERIADO X” ou a categoria equivalente.
 
-### RF13 — Selecionar o mês
+### RF13 - Selecionar o mês
 
 O sistema deverá abrir no mês atual e permitir a escolha de qualquer outro mês do ano selecionado.
 
-### RF14 — Integrar o VLibras
+### RF14 - Integrar o VLibras
 
 O componente oficial do VLibras deverá estar disponível na página para interpretação dos textos selecionados.
 
 ## 9. Regras de negócio
 
-### RN01 — Referência de data e horário
+### RN01 - Referência de data e horário
 
 Os cálculos dinâmicos deverão usar o fuso horário `America/Sao_Paulo`, correspondente ao horário de Goiânia.
 
-### RN02 — Ano atual
+### RN02 - Ano atual
 
 Quando o ano exibido for o ano atual:
 
@@ -204,15 +204,15 @@ Quando o ano exibido for o ano atual:
 - ontem, hoje e amanhã serão identificados quando estiverem dentro desse ano;
 - dias posteriores não receberão “X”.
 
-### RN03 — Ano anterior
+### RN03 - Ano anterior
 
 Quando o ano exibido for anterior ao ano atual, todas as datas válidas deverão ser marcadas como passadas.
 
-### RN04 — Ano futuro
+### RN04 - Ano futuro
 
 Quando o ano exibido for posterior ao ano atual, nenhuma data deverá ser marcada como passada.
 
-### RN05 — Mudança de ano
+### RN05 - Mudança de ano
 
 Na passagem de 31 de dezembro para 1º de janeiro:
 
@@ -220,7 +220,7 @@ Na passagem de 31 de dezembro para 1º de janeiro:
 - “HOJE” e “AMANHÃ” poderão aparecer no ano atual;
 - cada indicação aparecerá somente quando a respectiva data pertencer ao ano que está sendo visualizado.
 
-### RN06 — Marcação com X
+### RN06 - Marcação com X
 
 O “X” indicará visualmente que o dia passou. Ele deverá ficar em uma camada que preserve:
 
@@ -231,7 +231,7 @@ O “X” indicará visualmente que o dia passou. Ele deverá ficar em uma camad
 
 O texto acessível deverá indicar “DIA PASSADO”, sem depender exclusivamente do símbolo visual.
 
-### RN07 — Períodos do dia
+### RN07 - Períodos do dia
 
 A classificação inicial será:
 
@@ -240,7 +240,7 @@ A classificação inicial será:
 - tarde: de 12:00 a 17:59;
 - noite: de 18:00 a 23:59.
 
-### RN08 — Datas fixas e calculadas
+### RN08 - Datas fixas e calculadas
 
 O sistema deverá separar:
 
@@ -249,31 +249,31 @@ O sistema deverá separar:
 - datas específicas de determinado ano;
 - pontos facultativos, que poderão depender de ato oficial.
 
-### RN09 — Validação das datas
+### RN09 - Validação das datas
 
 Datas legais, comemorativas e pontos facultativos deverão ter sua fonte registrada. Datas variáveis deverão ser verificadas antes de serem tratadas como permanentes.
 
-### RN10 — Limites de navegação
+### RN10 - Limites de navegação
 
 O seletor deverá aceitar somente os anos de 2025 a 2030.
 
-### RN11 — Organização das semanas
+### RN11 - Organização das semanas
 
 Cada semana deverá começar no domingo. Os dias da semana deverão aparecer por extenso, e as linhas deverão receber numeração mensal iniciada em “SEMANA 1”.
 
-### RN12 — Estações e fases da Lua
+### RN12 - Estações e fases da Lua
 
 Os períodos das estações do ano e das fases da Lua serão apresentados somente por datas, sem exibição do horário da mudança.
 
-### RN13 — Abrangência das datas especiais
+### RN13 - Abrangência das datas especiais
 
 O calendário deverá apresentar datas nacionais e mundiais selecionadas. Não serão incluídos feriados estaduais de Goiás nem feriados municipais de Goiânia ou Trindade.
 
-### RN14 — Cores das categorias
+### RN14 - Cores das categorias
 
 Domingo, feriado, ponto facultativo e data comemorativa deverão possuir cores diferentes. A cor não será o único meio de distinção: cada categoria também deverá ter identificação textual acessível.
 
-### RN15 — Unidade textual para o VLibras
+### RN15 - Unidade textual para o VLibras
 
 Textos que formam uma única informação não deverão ser fragmentados em elementos selecionáveis independentes. Cada data será apresentada como uma expressão completa, por exemplo “HOJE, DIA 13”. Para evitar ambiguidade com estação ferroviária, o painel usará a expressão contextualizada “ESTAÇÃO DO ANO ATUAL: INVERNO”, seguida das datas de início e término.
 
@@ -281,38 +281,38 @@ Textos que formam uma única informação não deverão ser fragmentados em elem
 
 ### 10.1 Feriados nacionais informados para 2026
 
-- 1º de janeiro — Confraternização Universal.
-- 3 de abril — Paixão de Cristo.
-- 21 de abril — Tiradentes.
-- 1º de maio — Dia Mundial do Trabalho.
-- 7 de setembro — Independência do Brasil.
-- 12 de outubro — Nossa Senhora Aparecida.
-- 2 de novembro — Finados.
-- 15 de novembro — Proclamação da República.
-- 20 de novembro — Dia Nacional de Zumbi e da Consciência Negra.
-- 25 de dezembro — Natal.
+- 1º de janeiro - Confraternização Universal.
+- 3 de abril - Paixão de Cristo.
+- 21 de abril - Tiradentes.
+- 1º de maio - Dia Mundial do Trabalho.
+- 7 de setembro - Independência do Brasil.
+- 12 de outubro - Nossa Senhora Aparecida.
+- 2 de novembro - Finados.
+- 15 de novembro - Proclamação da República.
+- 20 de novembro - Dia Nacional de Zumbi e da Consciência Negra.
+- 25 de dezembro - Natal.
 
 ### 10.2 Pontos facultativos informados para 2026
 
-- 16 e 17 de fevereiro — Carnaval.
-- 18 de fevereiro — Quarta-feira de Cinzas, com horário a confirmar conforme ato oficial aplicável.
-- 4 de junho — Corpus Christi.
-- 28 de outubro — Dia do Servidor Público federal.
+- 16 e 17 de fevereiro - Carnaval.
+- 18 de fevereiro - Quarta-feira de Cinzas, com horário a confirmar conforme ato oficial aplicável.
+- 4 de junho - Corpus Christi.
+- 28 de outubro - Dia do Servidor Público federal.
 
 ### 10.3 Datas relacionadas à Libras e à comunidade surda
 
-- 22 de janeiro — Dia do Tradutor e Intérprete de Libras, sujeito à validação da denominação e da fonte.
-- 23 de abril — Dia Nacional da Educação de Surdos, sujeito à validação da denominação e da fonte.
-- 24 de abril — Dia Nacional da Língua Brasileira de Sinais.
-- 6 a 11 de setembro — memória histórica do Congresso de Milão de 1880.
-- 9 de setembro — aniversário do Seminário Nacional em Defesa das Escolas Bilíngues para Surdos de 2009, sujeito à validação documental.
-- 19 de setembro — Dia Nacional do Teatro Acessível.
-- 21 de setembro — Dia Nacional de Luta da Pessoa com Deficiência.
-- 20 a 26 de setembro — Semana Internacional dos Surdos, informada inicialmente para 2026 e sujeita à conferência anual com a WFD.
-- 23 de setembro — Dia Internacional das Línguas de Sinais.
-- 26 de setembro — Dia Nacional dos Surdos.
-- último domingo de setembro — Dia Mundial do Surdo, conforme regra informada e sujeita à validação.
-- 30 de setembro — Dia Internacional do Surdo e Dia Internacional do Tradutor e Intérprete, sujeitos à validação de denominação e fonte.
+- 22 de janeiro - Dia do Tradutor e Intérprete de Libras, sujeito à validação da denominação e da fonte.
+- 23 de abril - Dia Nacional da Educação de Surdos, sujeito à validação da denominação e da fonte.
+- 24 de abril - Dia Nacional da Língua Brasileira de Sinais.
+- 6 a 11 de setembro - memória histórica do Congresso de Milão de 1880.
+- 9 de setembro - aniversário do Seminário Nacional em Defesa das Escolas Bilíngues para Surdos de 2009, sujeito à validação documental.
+- 19 de setembro - Dia Nacional do Teatro Acessível.
+- 21 de setembro - Dia Nacional de Luta da Pessoa com Deficiência.
+- 20 a 26 de setembro - Semana Internacional dos Surdos, informada inicialmente para 2026 e sujeita à conferência anual com a WFD.
+- 23 de setembro - Dia Internacional das Línguas de Sinais.
+- 26 de setembro - Dia Nacional dos Surdos.
+- último domingo de setembro - Dia Mundial do Surdo, conforme regra informada e sujeita à validação.
+- 30 de setembro - Dia Internacional do Surdo e Dia Internacional do Tradutor e Intérprete, sujeitos à validação de denominação e fonte.
 
 ## 11. Requisitos de acessibilidade
 
@@ -331,35 +331,35 @@ Textos que formam uma única informação não deverão ser fragmentados em elem
 
 ## 12. Requisitos não funcionais
 
-### RNF01 — Responsividade
+### RNF01 - Responsividade
 
 A página deverá funcionar em celular, tablet e computador.
 
-### RNF02 — Desempenho
+### RNF02 - Desempenho
 
 O calendário e o relógio deverão funcionar diretamente no navegador, sem necessidade de banco de dados para a primeira versão.
 
-### RNF03 — Hospedagem
+### RNF03 - Hospedagem
 
 O projeto deverá ser compatível com hospedagem estática a partir do GitHub.
 
-### RNF04 — Manutenção
+### RNF04 - Manutenção
 
 Datas e descrições especiais deverão ficar organizadas em uma estrutura centralizada para facilitar correções e inclusão de novos anos.
 
-### RNF05 — Privacidade
+### RNF05 - Privacidade
 
 A primeira versão não deverá coletar dados pessoais nem exigir cadastro.
 
-### RNF06 — Compatibilidade
+### RNF06 - Compatibilidade
 
 O sistema deverá ser testado nas versões atuais dos principais navegadores compatíveis com o VLibras.
 
-### RNF07 — Impressão e mídia própria
+### RNF07 - Impressão e mídia própria
 
 O sistema não terá função específica de impressão, áudio ou vídeos próprios em Libras. A interpretação será realizada exclusivamente pela integração com o VLibras.
 
-### RNF08 — Autoria e proteção do código
+### RNF08 - Autoria e proteção do código
 
 Os arquivos de programação deverão utilizar `edufertanapo` como assinatura do código. O nome e o contato da autora deverão aparecer apenas no campo de identificação da interface, sem repetição nos cabeçalhos dos arquivos ou na documentação técnica. O repositório utilizará aviso de direitos autorais e licença proprietária, sem autorização geral de cópia, modificação, redistribuição ou comercialização.
 
@@ -418,48 +418,48 @@ A primeira versão será considerada funcional quando:
 
 ## 16. Etapas propostas de desenvolvimento
 
-### Etapa 1 — Estrutura
+### Etapa 1 - Estrutura
 
 - configurar o projeto;
 - criar o cabeçalho e o seletor de ano;
 - gerar os doze meses;
 - implementar responsividade básica.
 
-### Etapa 2 — Lógica temporal
+### Etapa 2 - Lógica temporal
 
 - calcular data atual em Goiânia;
 - identificar passado, ontem, hoje e amanhã;
 - tratar anos bissextos;
 - criar relógio analógico e texto em tempo real.
 
-### Etapa 3 — Ciclos naturais
+### Etapa 3 - Ciclos naturais
 
 - implementar estações do ano;
 - implementar fases da Lua;
 - registrar períodos de início e término.
 
-### Etapa 4 — Datas especiais
+### Etapa 4 - Datas especiais
 
 - cadastrar feriados nacionais;
 - calcular datas móveis;
 - cadastrar pontos facultativos;
 - cadastrar e validar datas da comunidade surda.
 
-### Etapa 5 — Acessibilidade
+### Etapa 5 - Acessibilidade
 
 - integrar o VLibras;
 - revisar estrutura semântica;
 - testar teclado, foco, contraste e ampliação;
 - revisar textos usados na interpretação.
 
-### Etapa 6 — Validação pedagógica
+### Etapa 6 - Validação pedagógica
 
 - testar o recurso com a professora;
 - observar a compreensão da estudante;
 - registrar dificuldades;
 - ajustar textos, destaques e sequência de interação.
 
-### Etapa 7 — Publicação
+### Etapa 7 - Publicação
 
 - executar testes finais;
 - corrigir falhas;
